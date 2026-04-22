@@ -1,0 +1,411 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>BENYA VÁSQUEZ /// CONTENT CREATOR</title>
+    
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@900&family=Space+Mono:ital,wght@0,400;0,700;1,400&display=swap" rel="stylesheet">
+    
+    <style>
+        /* === RESET Y VARIABLES EVA-01 === */
+        :root {
+            --bg-color: #0d0e15; /* Casi negro azulado oscuro */
+            --eva-purple: #7300A5; /* Morado Evangelion */
+            --eva-green: #39FF14; /* Verde Neón Evangelion */
+            --text-light: #f4f4f4;
+            --text-muted: #999;
+        }
+
+        * {
+            box-sizing: border-box;
+        }
+
+        body {
+            margin: 0;
+            padding: 0;
+            background-color: var(--bg-color);
+            color: var(--text-light);
+            font-family: 'Space Mono', monospace;
+            overflow-x: hidden;
+        }
+
+        /* === HERO (Pantalla Principal) === */
+        .hero {
+            position: relative;
+            height: 60vh;
+            overflow: hidden;
+            background: #000;
+            display: flex;
+            flex-direction: column;
+            justify-content: flex-end;
+            border-bottom: 2px solid var(--eva-green);
+        }
+
+        .hero::after {
+            content: "";
+            position: absolute;
+            top: 0; left: 0; width: 100%; height: 100%;
+            background: linear-gradient(to bottom, transparent 20%, rgba(13, 14, 21, 0.8) 100%);
+            z-index: 1;
+        }
+
+        .hero-content {
+            position: relative;
+            z-index: 2;
+            padding: 0 40px 40px 40px;
+            display: flex;
+            flex-direction: column;
+            align-items: flex-start;
+        }
+
+        .hero-title {
+            font-family: 'Montserrat', sans-serif;
+            font-weight: 900;
+            font-size: clamp(40px, 10vw, 120px);
+            line-height: 0.85;
+            margin: 0;
+            letter-spacing: -3px;
+            text-transform: uppercase;
+            color: var(--text-light);
+            text-shadow: 4px 4px 0 var(--eva-purple);
+        }
+
+        .hero-subtitle {
+            font-size: clamp(14px, 2vw, 20px);
+            margin-top: 15px;
+            letter-spacing: 2px;
+            color: var(--eva-green);
+            font-weight: bold;
+        }
+
+        /* === HUINCHA / MARQUEE === */
+        .marquee {
+            width: 100%;
+            background: var(--eva-purple);
+            color: var(--eva-green);
+            padding: 12px 0;
+            overflow: hidden;
+            white-space: nowrap;
+            display: flex;
+            border-bottom: 2px solid var(--eva-green);
+        }
+
+        .marquee span {
+            display: inline-block;
+            font-family: 'Montserrat', sans-serif;
+            font-weight: 900;
+            font-size: 20px;
+            letter-spacing: 2px;
+            animation: scroll-marquee 25s linear infinite;
+        }
+
+        @keyframes scroll-marquee {
+            0% { transform: translateX(0%); }
+            100% { transform: translateX(-50%); }
+        }
+
+        /* === SECCIONES GLOBALES === */
+        .section {
+            padding: 60px 40px;
+            border-bottom: 1px solid rgba(115, 0, 165, 0.3);
+        }
+
+        .section-title {
+            font-family: 'Montserrat', sans-serif;
+            font-weight: 900;
+            font-size: clamp(35px, 6vw, 70px);
+            margin: 0 0 30px 0;
+            color: transparent;
+            -webkit-text-stroke: 2px var(--eva-green);
+            text-transform: uppercase;
+            letter-spacing: -2px;
+            line-height: 1;
+        }
+
+        /* === SOBRE MÍ === */
+        .about-text {
+            font-size: clamp(16px, 2vw, 22px);
+            line-height: 1.6;
+            max-width: 900px;
+            color: var(--text-light);
+        }
+        .highlight {
+            color: var(--eva-green);
+            font-weight: bold;
+        }
+
+        /* === GRID DE EXPERIENCIA Y SKILLS === */
+        .grid-2 {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 40px;
+        }
+
+        .job {
+            margin-bottom: 30px;
+            padding-left: 15px;
+            border-left: 3px solid var(--eva-purple);
+        }
+        .job h3 {
+            font-family: 'Montserrat', sans-serif;
+            margin: 0 0 5px 0;
+            font-size: 24px;
+            color: var(--eva-green);
+        }
+        .job p.date {
+            margin: 0 0 10px 0;
+            font-size: 14px;
+            color: var(--text-muted);
+        }
+        .job ul {
+            margin: 0; padding-left: 20px;
+            font-size: 15px; line-height: 1.5;
+        }
+
+        /* === SCROLL HORIZONTAL DE VIDEOS === */
+        .grid-scroller {
+            width: 100%;
+            overflow-x: auto;
+            overflow-y: hidden;
+            padding: 0 0 20px 0;
+            scrollbar-width: thin;
+            scrollbar-color: var(--eva-purple) var(--bg-color);
+        }
+        .grid-scroller::-webkit-scrollbar { height: 8px; }
+        .grid-scroller::-webkit-scrollbar-track { background: var(--bg-color); }
+        .grid-scroller::-webkit-scrollbar-thumb { background-color: var(--eva-purple); border-radius: 4px; }
+
+        .video-track {
+            display: flex;
+            gap: 20px;
+            width: max-content;
+        }
+
+        /* Proporciones de videos y Efecto Hover */
+        .video {
+            height: clamp(350px, 60vh, 550px);
+            background: #000;
+            position: relative;
+            overflow: hidden; /* Clave para que la descripción no se salga */
+            border: 1px solid #333;
+            transition: border-color 0.3s;
+        }
+        .video.horizontal { aspect-ratio: 16 / 9; }
+        .video.vertical { aspect-ratio: 9 / 16; }
+
+        .video:hover {
+            border-color: var(--eva-green);
+        }
+
+        .video iframe {
+            position: absolute;
+            top: 0; left: 0; width: 100%; height: 100%;
+            border: none;
+            z-index: 1;
+        }
+
+        /* La Descripción Desplegable (Hover) */
+        .video-desc {
+            position: absolute;
+            bottom: -100%; /* Oculto abajo por defecto */
+            left: 0;
+            width: 100%;
+            background: rgba(115, 0, 165, 0.95); /* Morado EVA con opacidad */
+            border-top: 2px solid var(--eva-green);
+            padding: 15px;
+            transition: bottom 0.3s ease-in-out;
+            z-index: 2;
+            pointer-events: none; /* Permite hacer clic al video a través del div */
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+        }
+        
+        .video:hover .video-desc {
+            bottom: 0; /* Aparece al pasar el mouse */
+        }
+
+        .video-desc h4 {
+            margin: 0 0 5px 0;
+            color: var(--text-light);
+            font-family: 'Montserrat', sans-serif;
+            text-transform: uppercase;
+            font-size: 16px;
+        }
+
+        .video-desc p {
+            margin: 0;
+            font-size: 13px;
+            color: var(--eva-green);
+            line-height: 1.4;
+        }
+
+        /* === FOOTER / CONTACTO === */
+        .footer {
+            padding: 60px 40px;
+            background: #000;
+            border-top: 2px solid var(--eva-purple);
+            text-align: center;
+        }
+
+        .footer-title {
+            font-family: 'Montserrat', sans-serif;
+            font-weight: 900;
+            font-size: clamp(30px, 6vw, 60px);
+            color: var(--eva-green);
+            margin: 0 0 20px 0;
+        }
+
+        .footer-link {
+            display: inline-block;
+            margin: 0 15px;
+            font-size: 18px;
+            color: var(--text-light);
+            text-decoration: none;
+            border-bottom: 1px dashed var(--eva-purple);
+            transition: color 0.3s;
+        }
+
+        .footer-link:hover {
+            color: var(--eva-purple);
+        }
+
+        /* === ADAPTACIÓN MÓVIL === */
+        @media (max-width: 768px) {
+            .hero-content { padding: 0 20px 30px 20px; }
+            .section { padding: 40px 20px; }
+            .grid-2 { grid-template-columns: 1fr; gap: 30px; }
+            .video { height: 300px; }
+        }
+    </style>
+</head>
+<body>
+
+<header class="hero">
+    <div class="hero-content">
+        <h1 class="hero-title">BENYA<br>VÁSQUEZ R.</h1>
+        <p class="hero-subtitle">PUBLICISTA /// CONTENT CREATOR /// UGC</p>
+    </div>
+</header>
+
+<div class="marquee">
+    <span>
+        ESTRATEGIA DIGITAL /// RAVE CULTURE /// BRAND CONTENT /// INTELIGENCIA ARTIFICIAL /// 
+        ESTRATEGIA DIGITAL /// RAVE CULTURE /// BRAND CONTENT /// INTELIGENCIA ARTIFICIAL /// 
+    </span>
+</div>
+
+<section class="section">
+    <h2 class="section-title">01. SOBRE MÍ</h2>
+    <p class="about-text">
+        Soy un creativo audiovisual y publicista que busca conectar genuinamente las marcas con las personas. <span class="highlight">Elimino el sesgo de la "marca inalcanzable"</span> para convertirla en el mejor aliado del día a día, construyendo una cohesión real con el público en redes sociales. Me apasiona crear, aprender y, por sobre todo, asegurar que la audiencia nunca quede fuera de la conversación.
+    </p>
+</section>
+
+<section class="section">
+    <div class="grid-2">
+        <div>
+            <h2 class="section-title">02. EXPERIENCIA</h2>
+            <div class="job">
+                <h3>Simple Chile</h3>
+                <p class="date">Julio 2024 - Actualidad | Cliente: Abastible</p>
+                <ul>
+                    <li>Estrategia para lograr que la marca sea la más valorada en su categoría.</li>
+                    <li>Posicionamiento dentro del top 20 de marcas más valoradas en RRSS (Meta: Puesto 13 en 2025).</li>
+                </ul>
+            </div>
+            <div class="job">
+                <h3>KlassikCar</h3>
+                <p class="date">Noviembre 2023 - Julio 2024 | Skoda, Volkswagen, Audi</p>
+                <ul>
+                    <li>Acercamiento de una automotora clásica hacia las generaciones más jóvenes.</li>
+                    <li>Mejora significativa en la percepción digital de los clientes.</li>
+                </ul>
+            </div>
+            <div class="job">
+                <h3>Cheil Chile / Raya</h3>
+                <p class="date">Clientes: BCI & Mall Arauco</p>
+                <ul>
+                    <li><strong>BCI:</strong> Humanización de altos cargos para acercar el banco a las StartUps. Democratización de contenido denso a un lenguaje coloquial.</li>
+                    <li><strong>Arauco:</strong> Adaptación de efemérides en centros comerciales.</li>
+                </ul>
+            </div>
+        </div>
+        
+        <div>
+            <h2 class="section-title">03. STACK & SKILLS</h2>
+            <div class="job">
+                <h3>Software & IA</h3>
+                <p class="date">Edición y Creación</p>
+                <ul>
+                    <li>Adobe Suite: Premiere Pro, Photoshop, Illustrator.</li>
+                    <li>Edición ágil: CapCut.</li>
+                    <li>Inteligencia Artificial: Prompts y flujos con Gemini / ChatGPT.</li>
+                </ul>
+            </div>
+            <div class="job">
+                <h3>Habilidades</h3>
+                <p class="date">Hard & Soft Skills</p>
+                <ul>
+                    <li>Grabación formato RRSS, contenido callejero (vox populi) y eventos en vivo (Teletón, REC).</li>
+                    <li>Locuciones, cuñas y producción enfocada en Pymes.</li>
+                    <li>Alta comprensión, empatía y cercanía para entender a las audiencias.</li>
+                </ul>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="section">
+    <h2 class="section-title">04. PORTAFOLIO</h2>
+    
+    <div class="grid-scroller">
+        <div class="video-track">
+            
+            <div class="video vertical">
+                <iframe src="https://www.youtube.com/embed/sHyBrlnHK9I" allowfullscreen></iframe>
+                <div class="video-desc">
+                    <h4>Brand Content</h4>
+                    <p>Campaña de engagement. Rol: Dirección, grabación y edición.</p>
+                </div>
+            </div>
+
+            <div class="video horizontal">
+                <iframe src="https://www.youtube.com/embed/sxm0QOlixdI" allowfullscreen></iframe>
+                <div class="video-desc">
+                    <h4>Rave Culture</h4>
+                    <p>Registro de energía en crudo, diseño sonoro y montaje rápido.</p>
+                </div>
+            </div>
+
+            <div class="video vertical">
+                <iframe src="https://www.youtube.com/embed/YuD6OQaPa8A" allowfullscreen></iframe>
+                <div class="video-desc">
+                    <h4>Contenido Callejero</h4>
+                    <p>Vox populi para RRSS. Generando interacción orgánica real.</p>
+                </div>
+            </div>
+
+            <div class="video horizontal">
+                <iframe src="https://www.youtube.com/embed/9oDBvLQ4mV8" allowfullscreen></iframe>
+                <div class="video-desc">
+                    <h4>Eventos Corporativos</h4>
+                    <p>Resumen audiovisual. Captura de momentos clave e hitos de la marca.</p>
+                </div>
+            </div>
+
+        </div>
+    </div>
+</section>
+
+<footer class="footer">
+    <h2 class="footer-title">HAGAMOS ALGO GRANDE</h2>
+    <div>
+        <a href="mailto:Benja.basti.vr@gmail.com" class="footer-link">Benja.basti.vr@gmail.com</a>
+        <a href="https://www.linkedin.com/in/benya-vásquez-rodríguez-1a9bba100" target="_blank" class="footer-link">LinkedIn</a>
+    </div>
+</footer>
+
+</body>
+</html>
