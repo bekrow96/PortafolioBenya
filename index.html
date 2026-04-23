@@ -5,15 +5,15 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>BENYA VÁSQUEZ /// CONTENT CREATOR</title>
     
-    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@900&family=Space+Mono:ital,wght@0,400;0,700;1,400&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;800;900&family=Space+Mono:ital,wght@0,400;0,700;1,400&display=swap" rel="stylesheet">
     
     <style>
         /* === RESET Y VARIABLES EVA-01 === */
         :root {
-            --bg-color: #08090d; /* Fondo aún más oscuro para resaltar la cuadrícula */
+            --bg-color: #08090d;
             --eva-purple: #7300A5; 
             --eva-green: #39FF14; 
-            --eva-orange: #FF9F00; /* El amarillo/naranjo clásico del pecho del EVA */
+            --eva-orange: #FF9F00; 
             --text-light: #f4f4f4;
             --text-muted: #aaa;
         }
@@ -26,14 +26,14 @@
             margin: 0;
             padding: 0;
             background-color: var(--bg-color);
-            /* === CUADRÍCULA MORADA DE FONDO === */
+            /* === CUADRÍCULA MORADA DE FONDO MÁS NOTORIA === */
             background-image: 
-                linear-gradient(rgba(115, 0, 165, 0.15) 1.5px, transparent 1px),
-                linear-gradient(90deg, rgba(115, 0, 165, 0.15) 1.5px, transparent 1px);
-            background-size: 50px 50px; /* Tamaño de los cuadritos */
+                linear-gradient(rgba(115, 0, 165, 0.35) 2px, transparent 2px),
+                linear-gradient(90deg, rgba(115, 0, 165, 0.35) 2px, transparent 2px);
+            background-size: 50px 50px; 
             background-position: center center;
             color: var(--text-light);
-            font-family: 'Space Mono', monospace;
+            font-family: 'Space Mono', monospace; /* Fuente base */
             overflow-x: hidden;
         }
 
@@ -46,7 +46,7 @@
             display: flex;
             flex-direction: column;
             justify-content: flex-end;
-            border-bottom: 3px solid var(--eva-orange); /* Acento naranjo */
+            border-bottom: 3px solid var(--eva-orange);
         }
 
         .hero::after {
@@ -68,7 +68,7 @@
 
         .hero-title {
             font-family: 'Montserrat', sans-serif;
-            font-weight: 800;
+            font-weight: 900;
             font-size: clamp(25px, 7vw, 90px);
             line-height: 0.75;
             margin: 0;
@@ -107,7 +107,6 @@
             animation: scroll-marquee 25s linear infinite;
         }
 
-        /* Separadores en el marquee de color naranja */
         .marquee span strong {
             color: var(--eva-green);
             margin: 0 10px;
@@ -121,12 +120,11 @@
         /* === SECCIONES GLOBALES === */
         .section {
             padding: 60px 40px;
-            /* Se eliminaron las líneas horizontales divisorias */
         }
 
         .section-title {
             font-family: 'Montserrat', sans-serif;
-            font-weight: 800;
+            font-weight: 900;
             font-size: clamp(25px, 6vw, 50px);
             margin: 0 0 30px 0;
             color: transparent;
@@ -136,19 +134,32 @@
             line-height: 1;
         }
 
-        /* === SOBRE MÍ === */
+        /* === SOBRE MÍ (Centrado y Sin Serif) === */
+        .section-about {
+            text-align: center; /* Centra el título también si se desea, o al menos el contenedor */
+        }
+        
+        .section-about .section-title {
+            text-align: center;
+        }
+
         .about-text {
+            font-family: 'Montserrat', sans-serif; /* Fuente sin serif */
+            font-weight: 500;
             font-size: clamp(16px, 2vw, 22px);
             line-height: 1.6;
             max-width: 900px;
+            margin: 0 auto; /* Centra el bloque en la pantalla */
+            text-align: center; /* Texto centrado, no justificado */
             color: var(--text-light);
-            background: rgba(0,0,0,0.5); /* Fondeado sutil para leer sobre la cuadrícula */
-            padding: 20px;
-            border-left: 4px solid var(--eva-orange);
+            background: rgba(0,0,0,0.5); 
+            padding: 30px;
+            border-radius: 8px; /* Pequeño suavizado en las esquinas por estética */
         }
+        
         .highlight {
             color: var(--eva-green);
-            font-weight: bold;
+            font-weight: 800;
         }
 
         /* === GRID DE EXPERIENCIA Y SKILLS === */
@@ -162,26 +173,37 @@
             margin-bottom: 30px;
             padding-left: 15px;
             border-left: 3px solid var(--eva-purple);
-            background: rgba(0,0,0,0.4);
+            background: rgba(0,0,0,0.6); /* Un poco más oscuro para mejor lectura */
             padding: 20px;
         }
+        
+        /* Títulos como Simple Chile (Morado con sombra naranja) */
         .job h3 {
             font-family: 'Montserrat', sans-serif;
+            font-weight: 900;
             margin: 0 0 5px 0;
-            font-size: 24px;
-            color: var(--text-light);
+            font-size: 26px;
+            color: var(--eva-purple);
+            text-shadow: 2px 2px 0 var(--eva-orange); /* Leve sombra naranja */
         }
+        
         .job p.date {
             margin: 0 0 10px 0;
             font-size: 14px;
-            color: var(--eva-orange); /* Fechas en naranja */
+            color: var(--eva-orange); 
         }
+        
+        /* Textos largos en tipografía sin serif */
         .job ul {
             margin: 0; padding-left: 20px;
-            font-size: 15px; line-height: 1.5;
+            font-size: 15px; 
+            line-height: 1.6;
+            font-family: 'Montserrat', sans-serif;
+            font-weight: 400;
         }
+        
         .job ul li::marker {
-            color: var(--eva-orange); /* Viñetas naranjas */
+            color: var(--eva-orange); 
         }
 
         /* === PORTAFOLIO Y CATEGORÍAS === */
@@ -189,10 +211,10 @@
             margin-bottom: 50px;
         }
 
-        /* Subtítulos de categorías más pequeños */
         .category-title {
             font-family: 'Montserrat', sans-serif;
             font-size: clamp(20px, 4vw, 35px);
+            font-weight: 900;
             color: var(--eva-orange);
             margin: 0 0 20px 0;
             text-transform: uppercase;
@@ -236,7 +258,7 @@
         }
         .video.horizontal { aspect-ratio: 16 / 9; }
         .video.vertical { aspect-ratio: 9 / 16; }
-        .video.audio { aspect-ratio: 1 / 1; } /* Formato cuadrado para locuciones/guiones si se necesita */
+        .video.audio { aspect-ratio: 1 / 1; }
 
         .video:hover {
             border-color: var(--eva-green);
@@ -276,13 +298,17 @@
             font-family: 'Montserrat', sans-serif;
             text-transform: uppercase;
             font-size: 16px;
+            font-weight: 800;
         }
 
+        /* Textos largos sin serif */
         .video-desc p {
             margin: 0;
             font-size: 13px;
             color: var(--eva-green);
             line-height: 1.4;
+            font-family: 'Montserrat', sans-serif;
+            font-weight: 500;
         }
 
         /* === FOOTER / CONTACTO === */
@@ -309,6 +335,7 @@
             text-decoration: none;
             border-bottom: 1px dashed var(--eva-orange);
             transition: color 0.3s;
+            font-family: 'Space Mono', monospace;
         }
 
         .footer-link:hover {
@@ -340,7 +367,7 @@
     </span>
 </div>
 
-<section class="section">
+<section class="section section-about">
     <h2 class="section-title">01. SOBRE MÍ</h2>
     <p class="about-text">
         Soy un creativo audiovisual y publicista que busca conectar genuinamente las marcas con las personas. <span class="highlight">Elimino el sesgo de la "marca inalcanzable"</span> para convertirla en el mejor aliado del día a día, construyendo una cohesión real con el público en redes sociales. Me apasiona crear, aprender y, por sobre todo, asegurar que la audiencia nunca quede fuera de la conversación.
