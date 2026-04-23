@@ -26,18 +26,18 @@
             margin: 0;
             padding: 0;
             background-color: var(--bg-color);
-            /* === CUADRÍCULA MORADA DE FONDO MÁS NOTORIA === */
+            /* === CUADRÍCULA MORADA DE FONDO === */
             background-image: 
                 linear-gradient(rgba(115, 0, 165, 0.35) 2px, transparent 2px),
                 linear-gradient(90deg, rgba(115, 0, 165, 0.35) 2px, transparent 2px);
             background-size: 50px 50px; 
             background-position: center center;
             color: var(--text-light);
-            font-family: 'Space Mono', monospace; /* Fuente base */
+            font-family: 'Space Mono', monospace;
             overflow-x: hidden;
         }
 
-        /* === HERO (Pantalla Principal) === */
+        /* === HERO === */
         .hero {
             position: relative;
             height: 40vh;
@@ -133,7 +133,7 @@
             line-height: 1;
         }
 
-        /* === SOBRE MÍ (Centrado y Sin Serif) === */
+        /* === SOBRE MÍ === */
         .section-about {
             text-align: center; 
         }
@@ -176,14 +176,14 @@
             padding: 20px;
         }
         
-        /* Títulos como Simple Chile (Morado con sombra blanca) */
+        /* === AQUÍ ESTÁ LA SOMBRA BLANCA FORZADA === */
         .job h3 {
             font-family: 'Montserrat', sans-serif;
             font-weight: 900;
             margin: 0 0 5px 0;
             font-size: 26px;
             color: var(--eva-purple);
-            text-shadow: 2px 2px 0 var(--text-light); /* ¡Punto y coma agregado aquí! */
+            text-shadow: 2px 2px 0 #ffffff; /* Blanco puro */
         }
         
         .job p.date {
@@ -192,7 +192,6 @@
             color: var(--eva-orange); 
         }
         
-        /* Textos largos en tipografía sin serif */
         .job ul {
             margin: 0; padding-left: 20px;
             font-size: 15px; 
@@ -246,7 +245,6 @@
             width: max-content;
         }
 
-        /* Proporciones de videos y Efecto Hover */
         .video {
             height: clamp(350px, 50vh, 450px);
             background: #000;
@@ -270,7 +268,7 @@
             z-index: 1;
         }
 
-        /* La Descripción Desplegable (Hover) */
+        /* La Descripción Desplegable */
         .video-desc {
             position: absolute;
             bottom: -100%;
@@ -300,7 +298,6 @@
             font-weight: 800;
         }
 
-        /* Textos largos sin serif */
         .video-desc p {
             margin: 0;
             font-size: 13px;
@@ -310,7 +307,7 @@
             font-weight: 500;
         }
 
-        /* === FOOTER / CONTACTO === */
+        /* === FOOTER === */
         .footer {
             padding: 60px 40px;
             background: #000;
@@ -385,7 +382,7 @@
                     <li>Posicionamiento dentro del top 20 de marcas más valoradas en RRSS.</li>
                 </ul>
             </div>
-            </div>
+        </div>
         
         <div>
             <h2 class="section-title">03. STACK & SKILLS</h2>
