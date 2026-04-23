@@ -68,8 +68,8 @@
         .hero-title {
             font-family: 'Montserrat', sans-serif;
             font-weight: 900;
-            font-size: clamp(25px, 7vw, 90px);
-            line-height: 0.75;
+            font-size: clamp(35px, 7vw, 90px);
+            line-height: 0.8;
             margin: 0;
             letter-spacing: -3px;
             text-transform: uppercase;
@@ -78,7 +78,7 @@
         }
 
         .hero-subtitle {
-            font-size: clamp(9px, 2vw, 15px);
+            font-size: clamp(10px, 2vw, 15px);
             margin-top: 13px;
             letter-spacing: 0px;
             color: var(--eva-orange);
@@ -124,7 +124,7 @@
         .section-title {
             font-family: 'Montserrat', sans-serif;
             font-weight: 900;
-            font-size: clamp(25px, 6vw, 50px);
+            font-size: clamp(35px, 6vw, 50px); 
             margin: 0 0 30px 0;
             color: var(--eva-purple);
             text-shadow: 3px 3px 0 var(--eva-green);
@@ -146,7 +146,7 @@
             font-family: 'Montserrat', sans-serif; 
             font-weight: 500;
             font-size: clamp(16px, 2vw, 22px);
-            line-height: 1.2;
+            line-height: 1.4;
             max-width: 900px;
             margin: 0 auto; 
             text-align: center; 
@@ -171,19 +171,19 @@
         .job {
             margin-bottom: 30px;
             padding-left: 15px;
-            border-left: 3px solid var(--eva-purple);
-            background: rgba(0,0,0,0.6); 
+            border-left: 4px solid var(--eva-purple);
+            background: rgba(0,0,0,0.8); 
             padding: 20px;
         }
         
-        /* === AQUÍ ESTÁ LA SOMBRA BLANCA FORZADA === */
+        /* === SOMBRA BLANCA FORZADA EN TÍTULOS DE TRABAJO === */
         .job h3 {
             font-family: 'Montserrat', sans-serif;
             font-weight: 900;
             margin: 0 0 5px 0;
-            font-size: 26px;
+            font-size: 28px;
             color: var(--eva-purple);
-            text-shadow: 2px 2px 0 #ffffff; /* Blanco puro */
+            text-shadow: 2px 2px 0 #ffffff !important; /* Blanco puro obligatorio */
         }
         
         .job p.date {
@@ -201,7 +201,7 @@
         }
         
         .job ul li::marker {
-            color: var(--eva-orange); 
+            color: var(--text-light); 
         }
 
         /* === PORTAFOLIO Y CATEGORÍAS === */
@@ -340,7 +340,23 @@
 
         /* === ADAPTACIÓN MÓVIL === */
         @media (max-width: 768px) {
-            .hero-content { padding: 0 20px 30px 20px; }
+            .hero { 
+                height: auto; 
+                min-height: 25vh; 
+                padding-top: 80px; 
+                padding-bottom: 40px;
+                justify-content: center; 
+            }
+            .hero-content { padding: 0 20px; }
+            .hero-title { 
+                font-size: clamp(40px, 12vw, 60px); 
+                text-shadow: 2px 2px 0 var(--eva-green); 
+            }
+            
+            .section-title { 
+                font-size: 32px; 
+                text-shadow: 2px 2px 0 var(--eva-green); 
+            }
             .section { padding: 40px 20px; }
             .grid-2 { grid-template-columns: 1fr; gap: 30px; }
             .video { height: 300px; }
@@ -380,6 +396,23 @@
                 <ul>
                     <li>Estrategia para lograr que la marca sea la más valorada en su categoría.</li>
                     <li>Posicionamiento dentro del top 20 de marcas más valoradas en RRSS.</li>
+                </ul>
+            </div>
+            
+            <div class="job">
+                <h3>KlassikCar</h3>
+                <p class="date">Noviembre 2023 - Julio 2024 | Skoda, Volkswagen, Audi</p>
+                <ul>
+                    <li>Acercamiento de una automotora clásica hacia las generaciones más jóvenes.</li>
+                    <li>Mejora significativa en la percepción digital de los clientes.</li>
+                </ul>
+            </div>
+            <div class="job">
+                <h3>Cheil Chile / Raya</h3>
+                <p class="date">Clientes: BCI & Mall Arauco</p>
+                <ul>
+                    <li><strong>BCI:</strong> Humanización de altos cargos para acercar el banco a las StartUps. Democratización de contenido denso a un lenguaje coloquial.</li>
+                    <li><strong>Arauco:</strong> Adaptación de efemérides en centros comerciales.</li>
                 </ul>
             </div>
         </div>
@@ -517,7 +550,7 @@
 </section>
 
 <footer class="footer">
-    <h2 class="footer-title">HAGAMOS ALGO GRANDE</h2>
+    <h2 class="footer-title">¡TRABAJEMOS JUNTOS!</h2>
     <div>
         <a href="mailto:Benja.basti.vr@gmail.com" class="footer-link">Benja.basti.vr@gmail.com</a>
         <a href="https://www.linkedin.com/in/benya-vásquez-rodríguez-1a9bba100" target="_blank" class="footer-link">LinkedIn</a>
