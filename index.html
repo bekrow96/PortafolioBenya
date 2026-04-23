@@ -244,48 +244,56 @@
             width: max-content;
         }
 
+        /* === LÓGICA DE VIDEOS PARA ESCRITORIO (SIDE-BY-SIDE) === */
         .video {
+            display: flex; 
+            flex-direction: row;
             height: clamp(350px, 50vh, 450px);
             background: #000;
-            position: relative;
-            overflow: hidden;
+            overflow: hidden; 
             border: 1px solid #333;
-            transition: border-color 0.3s;
+            transition: border-color 0.3s ease;
         }
-        .video.horizontal { aspect-ratio: 16 / 9; }
-        .video.vertical { aspect-ratio: 9 / 16; }
-        .video.audio { aspect-ratio: 1 / 1; }
+
+        .video iframe {
+            height: 100%;
+            flex-shrink: 0; 
+            border: none;
+            position: relative;
+            z-index: 1;
+        }
+        .video.horizontal iframe { aspect-ratio: 16 / 9; }
+        .video.vertical iframe { aspect-ratio: 9 / 16; }
+        .video.audio iframe { aspect-ratio: 1 / 1; }
 
         .video:hover {
             border-color: var(--eva-green);
         }
 
-        .video iframe {
-            position: absolute;
-            top: 0; left: 0; width: 100%; height: 100%;
-            border: none;
-            z-index: 1;
-        }
-
-        /* La Descripción Desplegable */
+        /* El bloque de texto oculto al costado (Escritorio) */
         .video-desc {
-            position: absolute;
-            bottom: -100%;
-            left: 0;
-            width: 100%;
-            background: rgba(115, 0, 165, 0.95);
-            border-top: 2px solid var(--eva-green);
-            padding: 15px;
-            transition: bottom 0.3s ease-in-out;
-            z-index: 2;
-            pointer-events: none;
+            width: 0px; 
+            opacity: 0;
+            background: rgba(115, 0, 165, 0.95); /* Color EVA-01 Original restaurado */
+            border-left: 0px solid var(--eva-green);
             display: flex;
             flex-direction: column;
             justify-content: center;
+            overflow: hidden;
+            transition: width 0.4s ease, padding 0.4s ease, border-left 0.4s ease, opacity 0.4s ease;
+            padding: 0; 
+            pointer-events: none;
         }
-        
+
         .video:hover .video-desc {
-            bottom: 0;
+            width: 320px; 
+            padding: 0 25px;
+            border-left: 2px solid var(--eva-green);
+            opacity: 1;
+        }
+
+        .video-desc h4, .video-desc p {
+            min-width: 270px; 
         }
 
         .video-desc h4 {
@@ -300,8 +308,8 @@
         .video-desc p {
             margin: 0;
             font-size: 13px;
-            color: var(--eva-green);
-            line-height: 1.4;
+            color: var(--eva-green); /* Color EVA-01 Original restaurado */
+            line-height: 1.5;
             font-family: 'Montserrat', sans-serif;
             font-weight: 500;
         }
@@ -337,7 +345,7 @@
             color: var(--eva-orange);
         }
 
-        /* === ADAPTACIÓN MÓVIL === */
+        /* === ADAPTACIÓN MÓVIL (Mantiene el slide up y vuelve al formato bloque) === */
         @media (max-width: 768px) {
             .hero { 
                 height: auto; 
@@ -358,7 +366,51 @@
             }
             .section { padding: 30px 20px; } 
             .grid-2 { grid-template-columns: 1fr; gap: 30px; }
-            .video { height: 300px; }
+            
+            /* RESETEO AL FORMATO DE BLOQUE PARA MÓVILES */
+            .video { 
+                display: block; 
+                height: 300px; 
+                position: relative;
+            }
+            
+            .video iframe {
+                position: absolute;
+                top: 0; left: 0;
+                width: 100%; height: 100%;
+                aspect-ratio: auto;
+            }
+            
+            .video.horizontal { aspect-ratio: 16 / 9; width: auto; }
+            .video.vertical { aspect-ratio: 9 / 16; width: auto; }
+            .video.audio { aspect-ratio: 1 / 1; width: auto; }
+
+            /* RESETEO DEL HOVER: Que suba desde abajo como antes */
+            .video-desc {
+                position: absolute;
+                bottom: -100%;
+                left: 0;
+                width: 100%; 
+                height: auto;
+                background: rgba(115, 0, 165, 0.95);
+                border-left: none; /* Quitamos la linea lateral */
+                border-top: 2px solid var(--eva-green);
+                padding: 15px; 
+                opacity: 1; /* Siempre opaco */
+                transition: bottom 0.3s ease-in-out;
+                z-index: 2;
+            }
+
+            .video-desc h4, .video-desc p {
+                min-width: auto; /* Libera el tamaño de texto */
+            }
+
+            .video:hover .video-desc {
+                bottom: 0;
+                width: 100%;
+                padding: 15px;
+                border-left: none;
+            }
         }
     </style>
 </head>
@@ -409,16 +461,15 @@
             
             <div class="job">
                 <h3>Cheil Chile</h3>
-                <p class="date"> Mayo - Noviembre 2023 | Cliente: BCI</p>
+                <p class="date">Cliente: BCI</p>
                 <ul>
-                    <li>Humanización de altos cargos para acercar el banco a las StartUps.</li>
-                    <li>Democratización de contenido denso a un lenguaje coloquial.</li>
+                    <li>Humanización de altos cargos para acercar el banco a las StartUps. Democratización de contenido denso a un lenguaje coloquial.</li>
                 </ul>
             </div>
 
             <div class="job">
                 <h3>Raya</h3>
-                <p class="date"> Enero - Mayo2023 | Cliente: Mall Arauco</p>
+                <p class="date">Cliente: Mall Arauco</p>
                 <ul>
                     <li>Adaptación de efemérides en centros comerciales.</li>
                 </ul>
