@@ -10,11 +10,12 @@
     <style>
         /* === RESET Y VARIABLES EVA-01 === */
         :root {
-            --bg-color: #0d0e15; /* Casi negro azulado oscuro */
-            --eva-purple: #7300A5; /* Morado Evangelion */
-            --eva-green: #39FF14; /* Verde Neón Evangelion */
+            --bg-color: #08090d; /* Fondo aún más oscuro para resaltar la cuadrícula */
+            --eva-purple: #7300A5; 
+            --eva-green: #39FF14; 
+            --eva-orange: #FF9F00; /* El amarillo/naranjo clásico del pecho del EVA */
             --text-light: #f4f4f4;
-            --text-muted: #999;
+            --text-muted: #aaa;
         }
 
         * {
@@ -25,6 +26,12 @@
             margin: 0;
             padding: 0;
             background-color: var(--bg-color);
+            /* === CUADRÍCULA MORADA DE FONDO === */
+            background-image: 
+                linear-gradient(rgba(115, 0, 165, 0.15) 1px, transparent 1px),
+                linear-gradient(90deg, rgba(115, 0, 165, 0.15) 1px, transparent 1px);
+            background-size: 40px 40px; /* Tamaño de los cuadritos */
+            background-position: center center;
             color: var(--text-light);
             font-family: 'Space Mono', monospace;
             overflow-x: hidden;
@@ -39,14 +46,14 @@
             display: flex;
             flex-direction: column;
             justify-content: flex-end;
-            border-bottom: 2px solid var(--eva-green);
+            border-bottom: 3px solid var(--eva-orange); /* Acento naranjo */
         }
 
         .hero::after {
             content: "";
             position: absolute;
             top: 0; left: 0; width: 100%; height: 100%;
-            background: linear-gradient(to bottom, transparent 20%, rgba(13, 14, 21, 0.8) 100%);
+            background: linear-gradient(to bottom, transparent 20%, rgba(8, 9, 13, 0.9) 100%);
             z-index: 1;
         }
 
@@ -100,6 +107,12 @@
             animation: scroll-marquee 25s linear infinite;
         }
 
+        /* Separadores en el marquee de color naranja */
+        .marquee span strong {
+            color: var(--eva-orange);
+            margin: 0 10px;
+        }
+
         @keyframes scroll-marquee {
             0% { transform: translateX(0%); }
             100% { transform: translateX(-50%); }
@@ -108,7 +121,7 @@
         /* === SECCIONES GLOBALES === */
         .section {
             padding: 60px 40px;
-            border-bottom: 1px solid rgba(115, 0, 165, 0.3);
+            /* Se eliminaron las líneas horizontales divisorias */
         }
 
         .section-title {
@@ -129,6 +142,9 @@
             line-height: 1.6;
             max-width: 900px;
             color: var(--text-light);
+            background: rgba(0,0,0,0.5); /* Fondeado sutil para leer sobre la cuadrícula */
+            padding: 20px;
+            border-left: 4px solid var(--eva-orange);
         }
         .highlight {
             color: var(--eva-green);
@@ -146,6 +162,8 @@
             margin-bottom: 30px;
             padding-left: 15px;
             border-left: 3px solid var(--eva-purple);
+            background: rgba(0,0,0,0.4);
+            padding: 20px;
         }
         .job h3 {
             font-family: 'Montserrat', sans-serif;
@@ -156,11 +174,36 @@
         .job p.date {
             margin: 0 0 10px 0;
             font-size: 14px;
-            color: var(--text-muted);
+            color: var(--eva-orange); /* Fechas en naranja */
         }
         .job ul {
             margin: 0; padding-left: 20px;
             font-size: 15px; line-height: 1.5;
+        }
+        .job ul li::marker {
+            color: var(--eva-orange); /* Viñetas naranjas */
+        }
+
+        /* === PORTAFOLIO Y CATEGORÍAS === */
+        .portfolio-category {
+            margin-bottom: 50px;
+        }
+
+        /* Subtítulos de categorías más pequeños */
+        .category-title {
+            font-family: 'Montserrat', sans-serif;
+            font-size: clamp(20px, 4vw, 35px);
+            color: var(--eva-orange);
+            margin: 0 0 20px 0;
+            text-transform: uppercase;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+        
+        .category-title::before {
+            content: "///";
+            color: var(--eva-green);
         }
 
         /* === SCROLL HORIZONTAL DE VIDEOS === */
@@ -170,11 +213,11 @@
             overflow-y: hidden;
             padding: 0 0 20px 0;
             scrollbar-width: thin;
-            scrollbar-color: var(--eva-purple) var(--bg-color);
+            scrollbar-color: var(--eva-orange) transparent;
         }
         .grid-scroller::-webkit-scrollbar { height: 8px; }
-        .grid-scroller::-webkit-scrollbar-track { background: var(--bg-color); }
-        .grid-scroller::-webkit-scrollbar-thumb { background-color: var(--eva-purple); border-radius: 4px; }
+        .grid-scroller::-webkit-scrollbar-track { background: rgba(0,0,0,0.2); }
+        .grid-scroller::-webkit-scrollbar-thumb { background-color: var(--eva-orange); border-radius: 4px; }
 
         .video-track {
             display: flex;
@@ -184,15 +227,16 @@
 
         /* Proporciones de videos y Efecto Hover */
         .video {
-            height: clamp(350px, 60vh, 550px);
+            height: clamp(350px, 50vh, 450px);
             background: #000;
             position: relative;
-            overflow: hidden; /* Clave para que la descripción no se salga */
+            overflow: hidden;
             border: 1px solid #333;
             transition: border-color 0.3s;
         }
         .video.horizontal { aspect-ratio: 16 / 9; }
         .video.vertical { aspect-ratio: 9 / 16; }
+        .video.audio { aspect-ratio: 1 / 1; } /* Formato cuadrado para locuciones/guiones si se necesita */
 
         .video:hover {
             border-color: var(--eva-green);
@@ -208,22 +252,22 @@
         /* La Descripción Desplegable (Hover) */
         .video-desc {
             position: absolute;
-            bottom: -100%; /* Oculto abajo por defecto */
+            bottom: -100%;
             left: 0;
             width: 100%;
-            background: rgba(115, 0, 165, 0.95); /* Morado EVA con opacidad */
+            background: rgba(115, 0, 165, 0.95);
             border-top: 2px solid var(--eva-green);
             padding: 15px;
             transition: bottom 0.3s ease-in-out;
             z-index: 2;
-            pointer-events: none; /* Permite hacer clic al video a través del div */
+            pointer-events: none;
             display: flex;
             flex-direction: column;
             justify-content: center;
         }
         
         .video:hover .video-desc {
-            bottom: 0; /* Aparece al pasar el mouse */
+            bottom: 0;
         }
 
         .video-desc h4 {
@@ -245,7 +289,7 @@
         .footer {
             padding: 60px 40px;
             background: #000;
-            border-top: 2px solid var(--eva-purple);
+            border-top: 3px solid var(--eva-purple);
             text-align: center;
         }
 
@@ -263,12 +307,12 @@
             font-size: 18px;
             color: var(--text-light);
             text-decoration: none;
-            border-bottom: 1px dashed var(--eva-purple);
+            border-bottom: 1px dashed var(--eva-orange);
             transition: color 0.3s;
         }
 
         .footer-link:hover {
-            color: var(--eva-purple);
+            color: var(--eva-orange);
         }
 
         /* === ADAPTACIÓN MÓVIL === */
@@ -291,8 +335,8 @@
 
 <div class="marquee">
     <span>
-        ESTRATEGIA DIGITAL /// RAVE CULTURE /// BRAND CONTENT /// INTELIGENCIA ARTIFICIAL /// 
-        ESTRATEGIA DIGITAL /// RAVE CULTURE /// BRAND CONTENT /// INTELIGENCIA ARTIFICIAL /// 
+        ESTRATEGIA DIGITAL <strong>///</strong> BRAND CONTENT <strong>///</strong> CONTENIDO UGC <strong>///</strong> EVENTOS CORPORATIVOS <strong>///</strong> LOCUCIÓN <strong>///</strong> 
+        ESTRATEGIA DIGITAL <strong>///</strong> BRAND CONTENT <strong>///</strong> CONTENIDO UGC <strong>///</strong> EVENTOS CORPORATIVOS <strong>///</strong> LOCUCIÓN <strong>///</strong> 
     </span>
 </div>
 
@@ -312,26 +356,10 @@
                 <p class="date">Julio 2024 - Actualidad | Cliente: Abastible</p>
                 <ul>
                     <li>Estrategia para lograr que la marca sea la más valorada en su categoría.</li>
-                    <li>Posicionamiento dentro del top 20 de marcas más valoradas en RRSS (Meta: Puesto 13 en 2025).</li>
+                    <li>Posicionamiento dentro del top 20 de marcas más valoradas en RRSS.</li>
                 </ul>
             </div>
-            <div class="job">
-                <h3>KlassikCar</h3>
-                <p class="date">Noviembre 2023 - Julio 2024 | Skoda, Volkswagen, Audi</p>
-                <ul>
-                    <li>Acercamiento de una automotora clásica hacia las generaciones más jóvenes.</li>
-                    <li>Mejora significativa en la percepción digital de los clientes.</li>
-                </ul>
             </div>
-            <div class="job">
-                <h3>Cheil Chile / Raya</h3>
-                <p class="date">Clientes: BCI & Mall Arauco</p>
-                <ul>
-                    <li><strong>BCI:</strong> Humanización de altos cargos para acercar el banco a las StartUps. Democratización de contenido denso a un lenguaje coloquial.</li>
-                    <li><strong>Arauco:</strong> Adaptación de efemérides en centros comerciales.</li>
-                </ul>
-            </div>
-        </div>
         
         <div>
             <h2 class="section-title">03. STACK & SKILLS</h2>
@@ -348,9 +376,8 @@
                 <h3>Habilidades</h3>
                 <p class="date">Hard & Soft Skills</p>
                 <ul>
-                    <li>Grabación formato RRSS, contenido callejero (vox populi) y eventos en vivo (Teletón, REC).</li>
+                    <li>Grabación formato RRSS y contenido UGC.</li>
                     <li>Locuciones, cuñas y producción enfocada en Pymes.</li>
-                    <li>Alta comprensión, empatía y cercanía para entender a las audiencias.</li>
                 </ul>
             </div>
         </div>
@@ -360,43 +387,110 @@
 <section class="section">
     <h2 class="section-title">04. PORTAFOLIO</h2>
     
-    <div class="grid-scroller">
-        <div class="video-track">
-            
-            <div class="video vertical">
-                <iframe src="https://www.youtube.com/embed/sHyBrlnHK9I" allowfullscreen></iframe>
-                <div class="video-desc">
-                    <h4>Brand Content</h4>
-                    <p>Campaña de engagement. Rol: Dirección, grabación y edición.</p>
+    <div class="portfolio-category">
+        <h3 class="category-title">Brand Content</h3>
+        <div class="grid-scroller">
+            <div class="video-track">
+                <div class="video vertical">
+                    <iframe src="https://www.youtube.com/embed/sHyBrlnHK9I" allowfullscreen></iframe>
+                    <div class="video-desc">
+                        <h4>Ejemplo Brand Content</h4>
+                        <p>Descripción de la campaña y tu rol.</p>
+                    </div>
+                </div>
+                <div class="video horizontal">
+                    <iframe src="https://www.youtube.com/embed/sxm0QOlixdI" allowfullscreen></iframe>
+                    <div class="video-desc">
+                        <h4>Ejemplo Brand Content 2</h4>
+                        <p>Descripción de la campaña y tu rol.</p>
+                    </div>
                 </div>
             </div>
-
-            <div class="video horizontal">
-                <iframe src="https://www.youtube.com/embed/sxm0QOlixdI" allowfullscreen></iframe>
-                <div class="video-desc">
-                    <h4>Rave Culture</h4>
-                    <p>Registro de energía en crudo, diseño sonoro y montaje rápido.</p>
-                </div>
-            </div>
-
-            <div class="video vertical">
-                <iframe src="https://www.youtube.com/embed/YuD6OQaPa8A" allowfullscreen></iframe>
-                <div class="video-desc">
-                    <h4>Contenido Callejero</h4>
-                    <p>Vox populi para RRSS. Generando interacción orgánica real.</p>
-                </div>
-            </div>
-
-            <div class="video horizontal">
-                <iframe src="https://www.youtube.com/embed/9oDBvLQ4mV8" allowfullscreen></iframe>
-                <div class="video-desc">
-                    <h4>Eventos Corporativos</h4>
-                    <p>Resumen audiovisual. Captura de momentos clave e hitos de la marca.</p>
-                </div>
-            </div>
-
         </div>
     </div>
+
+    <div class="portfolio-category">
+        <h3 class="category-title">Contenido Callejero</h3>
+        <div class="grid-scroller">
+            <div class="video-track">
+                <div class="video vertical">
+                    <iframe src="https://www.youtube.com/embed/YuD6OQaPa8A" allowfullscreen></iframe>
+                    <div class="video-desc">
+                        <h4>Vox Populi</h4>
+                        <p>Generando interacción orgánica real en la calle.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="portfolio-category">
+        <h3 class="category-title">Eventos Corporativos</h3>
+        <div class="grid-scroller">
+            <div class="video-track">
+                <div class="video horizontal">
+                    <iframe src="https://www.youtube.com/embed/9oDBvLQ4mV8" allowfullscreen></iframe>
+                    <div class="video-desc">
+                        <h4>Resumen de Evento</h4>
+                        <p>Captura de momentos clave e hitos de la marca.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="portfolio-category">
+        <h3 class="category-title">Contenido UGC</h3>
+        <div class="grid-scroller">
+            <div class="video-track">
+                <div class="video vertical">
+                    <iframe src="https://www.youtube.com/embed/bhlOODsSCRU" allowfullscreen></iframe>
+                    <div class="video-desc">
+                        <h4>UGC para Marca X</h4>
+                        <p>Contenido orgánico desde la perspectiva del usuario.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="portfolio-category">
+        <h3 class="category-title">Guiones</h3>
+        <div class="grid-scroller">
+            <div class="video-track">
+                <div class="video horizontal">
+                    <iframe src="https://www.youtube.com/embed/iU0mgnyGALI" allowfullscreen></iframe>
+                    <div class="video-desc">
+                        <h4>Guion Comercial</h4>
+                        <p>Desarrollo narrativo y redacción.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="portfolio-category">
+        <h3 class="category-title">Locución</h3>
+        <div class="grid-scroller">
+            <div class="video-track">
+                <div class="video audio">
+                    <iframe src="https://www.youtube.com/embed/sHyBrlnHK9I" allowfullscreen></iframe>
+                    <div class="video-desc">
+                        <h4>Tono Comercial</h4>
+                        <p>Locución dinámica y enérgica.</p>
+                    </div>
+                </div>
+                <div class="video audio">
+                    <iframe src="https://www.youtube.com/embed/sHyBrlnHK9I" allowfullscreen></iframe>
+                    <div class="video-desc">
+                        <h4>Tono Institucional</h4>
+                        <p>Locución seria y corporativa.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
 </section>
 
 <footer class="footer">
