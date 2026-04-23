@@ -118,7 +118,7 @@
 
         /* === SECCIONES GLOBALES === */
         .section {
-            padding: 60px 40px;
+            padding: 30px 40px; 
         }
 
         .section-title {
@@ -171,19 +171,18 @@
         .job {
             margin-bottom: 30px;
             padding-left: 15px;
-            border-left: 4px solid var(--eva-purple);
-            background: rgba(0,0,0,0.8); 
+            border-left: 3px solid var(--eva-purple);
+            background: rgba(0,0,0,0.6); 
             padding: 20px;
         }
         
-        /* === SOMBRA BLANCA FORZADA EN TÍTULOS DE TRABAJO === */
         .job h3 {
             font-family: 'Montserrat', sans-serif;
             font-weight: 900;
             margin: 0 0 5px 0;
-            font-size: 28px;
+            font-size: 26px;
             color: var(--eva-purple);
-            text-shadow: 2px 2px 0 #ffffff !important; /* Blanco puro obligatorio */
+            text-shadow: 2px 2px 0 #ffffff !important; 
         }
         
         .job p.date {
@@ -201,12 +200,12 @@
         }
         
         .job ul li::marker {
-            color: var(--text-light); 
+            color: var(--eva-orange); 
         }
 
         /* === PORTAFOLIO Y CATEGORÍAS === */
         .portfolio-category {
-            margin-bottom: 15px;
+            margin-bottom: 20px; 
         }
 
         .category-title {
@@ -342,10 +341,10 @@
         @media (max-width: 768px) {
             .hero { 
                 height: auto; 
-                min-height: 25vh; 
-                padding-top: 80px; 
-                padding-bottom: 40px;
-                justify-content: center; 
+                min-height: auto; 
+                padding-top: 30px; 
+                padding-bottom: 30px;
+                justify-content: flex-end; 
             }
             .hero-content { padding: 0 20px; }
             .hero-title { 
@@ -357,7 +356,7 @@
                 font-size: 32px; 
                 text-shadow: 2px 2px 0 var(--eva-green); 
             }
-            .section { padding: 40px 20px; }
+            .section { padding: 30px 20px; } 
             .grid-2 { grid-template-columns: 1fr; gap: 30px; }
             .video { height: 300px; }
         }
@@ -407,12 +406,20 @@
                     <li>Mejora significativa en la percepción digital de los clientes.</li>
                 </ul>
             </div>
+            
             <div class="job">
-                <h3>Cheil Chile / Raya</h3>
-                <p class="date">Clientes: BCI & Mall Arauco</p>
+                <h3>Cheil Chile</h3>
+                <p class="date">Cliente: BCI</p>
                 <ul>
-                    <li><strong>BCI:</strong> Humanización de altos cargos para acercar el banco a las StartUps. Democratización de contenido denso a un lenguaje coloquial.</li>
-                    <li><strong>Arauco:</strong> Adaptación de efemérides en centros comerciales.</li>
+                    <li>Humanización de altos cargos para acercar el banco a las StartUps. Democratización de contenido denso a un lenguaje coloquial.</li>
+                </ul>
+            </div>
+
+            <div class="job">
+                <h3>Raya</h3>
+                <p class="date">Cliente: Mall Arauco</p>
+                <ul>
+                    <li>Adaptación de efemérides en centros comerciales.</li>
                 </ul>
             </div>
         </div>
@@ -550,7 +557,7 @@
 </section>
 
 <footer class="footer">
-    <h2 class="footer-title">¡TRABAJEMOS JUNTOS!</h2>
+    <h2 class="footer-title">HAGAMOS ALGO GRANDE</h2>
     <div>
         <a href="mailto:Benja.basti.vr@gmail.com" class="footer-link">Benja.basti.vr@gmail.com</a>
         <a href="https://www.linkedin.com/in/benya-vásquez-rodríguez-1a9bba100" target="_blank" class="footer-link">LinkedIn</a>
