@@ -74,64 +74,75 @@
         }
         .job h3 { 
             font-family: 'Montserrat', sans-serif; font-weight: 900; color: var(--c-cyan); 
-            margin: 0; font-size: 26px; text-shadow: 2px 2px 0 #fff;
+            margin: 0; font-size: 26px; text-shadow: 2px 2px 0 solid var(--c-pink);
         }
         .job p.date { color: var(--c-pink); margin: 5px 0 15px; font-size: 14px; }
         .job ul { font-family: 'Montserrat', sans-serif; padding-left: 20px; line-height: 1.6; }
 
-        /* --- PORTAFOLIO (DESKTOP EXPAND) --- */
+        /* --- PORTAFOLIO (SCROLL HORIZONTAL Y EXPANSIÓN) --- */
         .portfolio-category { margin-bottom: 40px; }
         .category-title { 
             font-family: 'Montserrat', sans-serif; color: var(--text-light); 
             text-transform: uppercase; margin-bottom: 20px; display: flex; gap: 10px; 
         }
         .category-title::before { content: "///"; color: var(--c-pink); }
-        .grid-scroller { overflow-x: auto; padding-bottom: 20px; scrollbar-color: var(--c-cyan) transparent; }
+        .grid-scroller { overflow-x: auto; padding-bottom: 20px; scrollbar-width: thin; scrollbar-color: var(--c-cyan) transparent; }
+        .grid-scroller::-webkit-scrollbar { height: 8px; }
+        .grid-scroller::-webkit-scrollbar-track { background: rgba(0,0,0,0.2); }
+        .grid-scroller::-webkit-scrollbar-thumb { background-color: var(--c-cyan); border-radius: 4px; }
+        
         .video-track { display: flex; gap: 20px; width: max-content; }
         
+        /* Contenedor flex para el video y su descripción */
         .video { 
             display: flex; height: 450px; background: #000; border: 2px solid #333; 
             overflow: hidden; transition: border-color 0.3s; border-radius: 6px;
         }
+        /* El iframe jamás se encoje (flex-shrink: 0) */
         .video iframe { height: 100%; flex-shrink: 0; border: none; }
         .video.vertical iframe { aspect-ratio: 9/16; }
         .video:hover { border-color: var(--c-pink); }
         
+        /* Caja de descripción oculta por defecto */
         .video-desc { 
             width: 0; opacity: 0; background: var(--bg-color); display: flex; 
             flex-direction: column; justify-content: center; transition: all 0.4s ease;
             border-left: 0px solid var(--c-pink);
+            padding: 0;
         }
-        .video:hover .video-desc { width: 320px; padding: 0 25px; opacity: 1; border-left: 2px solid var(--c-pink); }
         .video-desc h4 { 
             color: var(--c-cyan); font-family: 'Montserrat', sans-serif; text-transform: uppercase;
             margin: 0 0 10px; text-shadow: 1px 1px 2px rgba(0,0,0,0.8);
         }
         .video-desc p { font-family: 'Montserrat', sans-serif; font-size: 13px; color: var(--c-pink); margin: 0; min-width: 270px; }
 
+        /* Expansión en Escritorio */
+        .video:hover .video-desc { width: 320px; padding: 0 25px; opacity: 1; border-left: 2px solid var(--c-pink); }
+
         /* --- FOOTER --- */
         .footer { padding: 60px; background: #000; border-top: 3px solid var(--c-cyan); text-align: center; }
         .footer-title { font-family: 'Montserrat', sans-serif; font-weight: 900; color: var(--c-pink); margin-bottom: 20px; font-size: clamp(30px, 6vw, 60px); }
         .footer-link { color: var(--text-light); margin: 0 15px; text-decoration: none; border-bottom: 1px dashed var(--c-cyan); }
 
-        /* --- ADAPTACIÓN MÓVIL CORREGIDA --- */
+        /* --- ADAPTACIÓN MÓVIL (LA MAGIA DE LO SIMPLE) --- */
         @media (max-width: 768px) {
             .grid-2 { grid-template-columns: 1fr; }
             .section { padding: 30px 20px; }
             .hero { height: auto; padding: 60px 20px 30px; }
             
-            /* Solución al error: Mantenemos el display flex y eliminamos el absolute del iframe */
-            .video { 
-                display: flex; height: 350px; position: relative; 
-            }
-            .video-desc { 
-                position: absolute; bottom: -100%; left: 0; width: 100%; height: auto; 
-                opacity: 1; background: var(--bg-color); border-top: 3px solid var(--c-pink); 
-                border-left: none; transition: bottom 0.3s; z-index: 5;
-            }
+            /* Ajustamos la altura para pantallas de celular */
+            .video { height: 380px; }
+
+            /* Al tocar en móvil, se expande a la derecha igual que en PC. 
+               Como el video no se achica, el usuario solo desliza con el dedo */
             .video:hover .video-desc, .video:active .video-desc { 
-                bottom: 0; width: 100%; padding: 20px; border-left: none; 
+                width: 280px; /* Ancho cómodo para leer en móvil */
+                padding: 0 20px; 
+                opacity: 1; 
+                border-left: 2px solid var(--c-pink); 
             }
+            /* Evitamos que el texto se comprima feo durante la animación */
+            .video-desc p { min-width: 240px; }
         }
     </style>
 </head>
