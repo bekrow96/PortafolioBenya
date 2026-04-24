@@ -4,640 +4,191 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>BENYA VÁSQUEZ /// CONTENT CREATOR</title>
-    
     <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;800;900&family=Space+Mono:ital,wght@0,400;0,700;1,400&display=swap" rel="stylesheet">
-    
     <style>
-        /* === RESET Y VARIABLES EVA-01 === */
+        /* --- PALETA ACTUALIZADA: DARK SOBRIO + DETALLES NEÓN INTEGRADOS --- */
         :root {
-            --bg-color: #08090d;
-            --eva-purple: #7300A5; 
-            --eva-green: #39FF14; 
-            --eva-orange: #FF9F00; 
-            --text-light: #f4f4f4;
+            --bg-color: #121212; /* Gris Carbón Elegante (Dark Sobrio) */
+            --c-purple: #8E44AD; /* Morado Desaturado para sombras base */
+            --c-pink: #FF007F;   /* Magenta Neón para detalles */
+            --c-cyan: #00E5FF;   /* Cian Eléctrico para títulos */
+            --text-light: #f4f4f4; 
             --text-muted: #aaa;
         }
-
-        * {
-            box-sizing: border-box;
-        }
-
+        * { box-sizing: border-box; }
         body {
-            margin: 0;
-            padding: 0;
-            background-color: var(--bg-color);
-            /* === CUADRÍCULA MORADA DE FONDO === */
-            background-image: 
-                linear-gradient(rgba(115, 0, 165, 0.35) 2px, transparent 2px),
-                linear-gradient(90deg, rgba(115, 0, 165, 0.35) 2px, transparent 2px);
-            background-size: 50px 50px; 
-            background-position: center center;
-            color: var(--text-light);
-            font-family: 'Space Mono', monospace;
-            overflow-x: hidden;
+            margin: 0; background-color: var(--bg-color); color: var(--text-light);
+            font-family: 'Space Mono', monospace; overflow-x: hidden;
+            /* Cuadrícula con un tono morado muy sutil */
+            background-image: linear-gradient(rgba(142, 68, 173, 0.1) 1.5px, transparent 1.5px),
+                              linear-gradient(90deg, rgba(142, 68, 173, 0.1) 1.5px, transparent 1.5px);
+            background-size: 50px 50px; background-position: center;
         }
-
-        /* === HERO === */
-        .hero {
-            position: relative;
-            height: 40vh;
-            overflow: hidden;
-            background: #000;
-            display: flex;
-            flex-direction: column;
-            justify-content: flex-end;
-        }
-
-        .hero::after {
-            content: "";
-            position: absolute;
-            top: 0; left: 0; width: 100%; height: 100%;
-            background: linear-gradient(to bottom, transparent 20%, rgba(8, 9, 13, 0.9) 100%);
-            z-index: 1;
-        }
-
-        .hero-content {
-            position: relative;
-            z-index: 2;
-            padding: 0 40px 40px 40px;
-            display: flex;
-            flex-direction: column;
-            align-items: flex-start;
-        }
-
-        .hero-title {
-            font-family: 'Montserrat', sans-serif;
-            font-weight: 900;
-            font-size: clamp(35px, 7vw, 90px);
-            line-height: 0.8;
-            margin: 0;
-            letter-spacing: -3px;
-            text-transform: uppercase;
-            color: var(--eva-purple);
-            text-shadow: 3px 3px 0 var(--eva-green);
-        }
-
-        .hero-subtitle {
-            font-size: clamp(10px, 2vw, 15px);
-            margin-top: 13px;
-            letter-spacing: 0px;
-            color: var(--eva-orange);
-            font-weight: bold;
-        }
-
-        /* === HUINCHA / MARQUEE === */
-        .marquee {
-            width: 100%;
-            background: var(--eva-purple);
-            color: var(--eva-green);
-            padding: 12px 0;
-            overflow: hidden;
-            white-space: nowrap;
-            display: flex;
-            border: 2px solid var(--eva-green);
-        }
-
-        .marquee span {
-            display: inline-block;
-            font-family: 'Montserrat', sans-serif;
-            font-weight: 800;
-            font-size: 20px;
-            letter-spacing: 2px;
-            animation: scroll-marquee 25s linear infinite;
-        }
-
-        .marquee span strong {
-            color: var(--eva-orange);
-            margin: 0 10px;
-        }
-
-        @keyframes scroll-marquee {
-            0% { transform: translateX(0%); }
-            100% { transform: translateX(-50%); }
-        }
-
-        /* === SECCIONES GLOBALES === */
-        .section {
-            padding: 30px 40px; 
-        }
-
+        /* --- COMPONENTES GLOBALES --- */
+        .section { padding: 30px 40px; }
         .section-title {
-            font-family: 'Montserrat', sans-serif;
-            font-weight: 900;
-            font-size: clamp(35px, 6vw, 50px); 
-            margin: 0 0 30px 0;
-            color: var(--eva-purple);
-            text-shadow: 3px 3px 0 var(--eva-green);
-            text-transform: uppercase;
-            letter-spacing: -2px;
-            line-height: 1;
+            font-family: 'Montserrat', sans-serif; font-weight: 900; font-size: clamp(35px, 6vw, 50px);
+            margin-bottom: 30px; color: var(--c-cyan); text-transform: uppercase; letter-spacing: -2px;
         }
+        /* --- HERO & MARQUEE --- */
+        .hero {
+            height: 40vh; display: flex; flex-direction: column; justify-content: flex-end;
+            background: #000; position: relative; overflow: hidden;
+        }
+        .hero::after {
+            content: ""; position: absolute; inset: 0;
+            background: linear-gradient(to bottom, transparent 20%, rgba(18, 18, 18, 0.95) 100%); z-index: 1;
+        }
+        .hero-content { position: relative; z-index: 2; padding: 40px; }
+        .hero-title {
+            font-family: 'Montserrat', sans-serif; font-weight: 900; font-size: clamp(35px, 7vw, 90px);
+            line-height: 0.8; margin: 0; text-transform: uppercase; 
+            text-shadow: 4px 4px 0 var(--c-purple); /* Sombra Dark Sobrio */
+        }
+        .hero-subtitle { color: var(--text-light); font-weight: bold; margin-top: 15px; font-size: clamp(10px, 2vw, 15px); }
+        .marquee {
+            background: rgba(0, 229, 255, 0.05); color: var(--c-cyan); padding: 12px 0;
+            border-top: 2px solid var(--c-pink); border-bottom: 2px solid var(--c-pink);
+            overflow: hidden; white-space: nowrap; display: flex;
+        }
+        .marquee span { 
+            display: inline-block; font-family: 'Montserrat', sans-serif; font-weight: 800; 
+            font-size: 20px; animation: scroll-marquee 25s linear infinite; 
+        }
+        .marquee strong { color: var(--c-pink); margin: 0 10px; }
+        @keyframes scroll-marquee { 0% { transform: translateX(0%); } 100% { transform: translateX(-50%); } }
 
-        /* === SOBRE MÍ === */
-        .section-about {
-            text-align: center; 
-        }
-        
-        .section-about .section-title {
-            text-align: center;
-        }
-
+        /* --- SOBRE MÍ --- */
+        .section-about { text-align: center; }
         .about-text {
-            font-family: 'Montserrat', sans-serif; 
-            font-weight: 500;
-            font-size: clamp(16px, 2vw, 22px);
-            line-height: 1.4;
-            max-width: 900px;
-            margin: 0 auto; 
-            text-align: center; 
-            color: var(--text-light);
-            background: rgba(0,0,0,0.5); 
-            padding: 30px;
-            border-radius: 8px; 
+            font-family: 'Montserrat', sans-serif; max-width: 900px; margin: 0 auto;
+            font-size: clamp(16px, 2vw, 22px); line-height: 1.4; background: rgba(0,0,0,0.4);
+            padding: 30px; border-radius: 8px;
         }
+        .highlight { color: var(--c-pink); font-weight: 800; }
+
+        /* --- EXPERIENCIA & SKILLS --- */
+        .grid-2 { display: grid; grid-template-columns: 1fr 1fr; gap: 40px; }
+        .job { 
+            margin-bottom: 30px; padding: 20px; background: rgba(0,0,0,0.4); 
+            border-left: 3px solid var(--c-pink); 
+        }
+        .job h3 { 
+            font-family: 'Montserrat', sans-serif; font-weight: 900; color: var(--c-cyan); 
+            margin: 0; font-size: 26px; text-shadow: 2px 2px 0 #fff;
+        }
+        .job p.date { color: var(--c-pink); margin: 5px 0 15px; font-size: 14px; }
+        .job ul { font-family: 'Montserrat', sans-serif; padding-left: 20px; line-height: 1.6; }
+
+        /* --- PORTAFOLIO (DESKTOP EXPAND) --- */
+        .portfolio-category { margin-bottom: 40px; }
+        .category-title { 
+            font-family: 'Montserrat', sans-serif; color: var(--text-light); 
+            text-transform: uppercase; margin-bottom: 20px; display: flex; gap: 10px; 
+        }
+        .category-title::before { content: "///"; color: var(--c-pink); }
+        .grid-scroller { overflow-x: auto; padding-bottom: 20px; scrollbar-color: var(--c-cyan) transparent; }
+        .video-track { display: flex; gap: 20px; width: max-content; }
+        .video { 
+            display: flex; height: 450px; background: #000; border: 2px solid #333; 
+            overflow: hidden; transition: border-color 0.3s; border-radius: 6px;
+        }
+        .video iframe { height: 100%; flex-shrink: 0; border: none; }
+        .video.vertical iframe { aspect-ratio: 9/16; }
+        .video:hover { border-color: var(--c-pink); }
         
-        .highlight {
-            color: var(--eva-green);
-            font-weight: 800;
+        /* LÓGICA DE DESCRIPCIÓN: ESTILO INTEGRADO (Fondo oscuro, borde neón) */
+        .video-desc { 
+            width: 0; opacity: 0; background: var(--bg-color); display: flex; 
+            flex-direction: column; justify-content: center; transition: all 0.4s ease;
+            border-left: 0px solid var(--c-pink);
         }
+        .video:hover .video-desc { width: 320px; padding: 0 25px; opacity: 1; border-left: 2px solid var(--c-pink); }
+        .video-desc h4 { 
+            color: var(--c-cyan); font-family: 'Montserrat', sans-serif; text-transform: uppercase;
+            margin: 0 0 10px; text-shadow: 1px 1px 2px rgba(0,0,0,0.8);
+        }
+        .video-desc p { font-family: 'Montserrat', sans-serif; font-size: 13px; color: var(--c-pink); margin: 0; min-width: 270px; }
 
-        /* === GRID DE EXPERIENCIA Y SKILLS === */
-        .grid-2 {
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 40px;
-        }
+        /* --- FOOTER --- */
+        .footer { padding: 60px; background: #000; border-top: 3px solid var(--c-cyan); text-align: center; }
+        .footer-title { font-family: 'Montserrat', sans-serif; font-weight: 900; color: var(--c-pink); margin-bottom: 20px; font-size: clamp(30px, 6vw, 60px); }
+        .footer-link { color: var(--text-light); margin: 0 15px; text-decoration: none; border-bottom: 1px dashed var(--c-cyan); }
 
-        .job {
-            margin-bottom: 30px;
-            padding-left: 15px;
-            border-left: 3px solid var(--eva-purple);
-            background: rgba(0,0,0,0.6); 
-            padding: 20px;
-        }
-        
-        .job h3 {
-            font-family: 'Montserrat', sans-serif;
-            font-weight: 900;
-            margin: 0 0 5px 0;
-            font-size: 26px;
-            color: var(--eva-purple);
-            text-shadow: 2px 2px 0 #ffffff !important; 
-        }
-        
-        .job p.date {
-            margin: 0 0 10px 0;
-            font-size: 14px;
-            color: var(--eva-orange); 
-        }
-        
-        .job ul {
-            margin: 0; padding-left: 20px;
-            font-size: 15px; 
-            line-height: 1.6;
-            font-family: 'Montserrat', sans-serif;
-            font-weight: 400;
-        }
-        
-        .job ul li::marker {
-            color: var(--eva-orange); 
-        }
-
-        /* === PORTAFOLIO Y CATEGORÍAS === */
-        .portfolio-category {
-            margin-bottom: 20px; 
-        }
-
-        .category-title {
-            font-family: 'Montserrat', sans-serif;
-            font-size: clamp(20px, 4vw, 35px);
-            font-weight: 900;
-            color: var(--eva-orange);
-            margin: 0 0 20px 0;
-            text-transform: uppercase;
-            display: flex;
-            align-items: center;
-            gap: 10px;
-        }
-        
-        .category-title::before {
-            content: "///";
-            color: var(--eva-purple);
-        }
-
-        /* === SCROLL HORIZONTAL DE VIDEOS === */
-        .grid-scroller {
-            width: 100%;
-            overflow-x: auto;
-            overflow-y: hidden;
-            padding: 0 0 20px 0;
-            scrollbar-width: thin;
-            scrollbar-color: var(--eva-orange) transparent;
-        }
-        .grid-scroller::-webkit-scrollbar { height: 8px; }
-        .grid-scroller::-webkit-scrollbar-track { background: rgba(0,0,0,0.2); }
-        .grid-scroller::-webkit-scrollbar-thumb { background-color: var(--eva-orange); border-radius: 4px; }
-
-        .video-track {
-            display: flex;
-            gap: 20px;
-            width: max-content;
-        }
-
-        /* === LÓGICA DE VIDEOS PARA ESCRITORIO (SIDE-BY-SIDE) === */
-        .video {
-            display: flex; 
-            flex-direction: row;
-            height: clamp(350px, 50vh, 450px);
-            background: #000;
-            overflow: hidden; 
-            border: 1px solid #333;
-            transition: border-color 0.3s ease;
-        }
-
-        .video iframe {
-            height: 100%;
-            flex-shrink: 0; 
-            border: none;
-            position: relative;
-            z-index: 1;
-        }
-        .video.horizontal iframe { aspect-ratio: 16 / 9; }
-        .video.vertical iframe { aspect-ratio: 9 / 16; }
-        .video.audio iframe { aspect-ratio: 1 / 1; }
-
-        .video:hover {
-            border-color: var(--eva-green);
-        }
-
-        /* El bloque de texto oculto al costado (Escritorio) */
-        .video-desc {
-            width: 0px; 
-            opacity: 0;
-            background: rgba(115, 0, 165, 0.95); /* Color EVA-01 Original restaurado */
-            border-left: 0px solid var(--eva-green);
-            display: flex;
-            flex-direction: column;
-            justify-content: center;
-            overflow: hidden;
-            transition: width 0.4s ease, padding 0.4s ease, border-left 0.4s ease, opacity 0.4s ease;
-            padding: 0; 
-            pointer-events: none;
-        }
-
-        .video:hover .video-desc {
-            width: 320px; 
-            padding: 0 25px;
-            border-left: 2px solid var(--eva-green);
-            opacity: 1;
-        }
-
-        .video-desc h4, .video-desc p {
-            min-width: 270px; 
-        }
-
-        .video-desc h4 {
-            margin: 0 0 5px 0;
-            color: var(--text-light);
-            font-family: 'Montserrat', sans-serif;
-            text-transform: uppercase;
-            font-size: 16px;
-            font-weight: 800;
-        }
-
-        .video-desc p {
-            margin: 0;
-            font-size: 13px;
-            color: var(--eva-green); /* Color EVA-01 Original restaurado */
-            line-height: 1.5;
-            font-family: 'Montserrat', sans-serif;
-            font-weight: 500;
-        }
-
-        /* === FOOTER === */
-        .footer {
-            padding: 60px 40px;
-            background: #000;
-            border-top: 3px solid var(--eva-purple);
-            text-align: center;
-        }
-
-        .footer-title {
-            font-family: 'Montserrat', sans-serif;
-            font-weight: 900;
-            font-size: clamp(30px, 6vw, 60px);
-            color: var(--eva-green);
-            margin: 0 0 20px 0;
-        }
-
-        .footer-link {
-            display: inline-block;
-            margin: 0 15px;
-            font-size: 18px;
-            color: var(--text-light);
-            text-decoration: none;
-            border-bottom: 1px dashed var(--eva-orange);
-            transition: color 0.3s;
-            font-family: 'Space Mono', monospace;
-        }
-
-        .footer-link:hover {
-            color: var(--eva-orange);
-        }
-
-        /* === ADAPTACIÓN MÓVIL (Mantiene el slide up y vuelve al formato bloque) === */
         @media (max-width: 768px) {
-            .hero { 
-                height: auto; 
-                min-height: auto; 
-                padding-top: 30px; 
-                padding-bottom: 30px;
-                justify-content: flex-end; 
+            .grid-2 { grid-template-columns: 1fr; }
+            .section { padding: 30px 20px; }
+            .hero { height: auto; padding: 60px 20px 30px; }
+            .video { display: block; height: 350px; position: relative; }
+            .video iframe { width: 100%; position: absolute; }
+            .video-desc { 
+                position: absolute; bottom: -100%; width: 100%; height: auto; 
+                opacity: 1; background: var(--bg-color); border-top: 3px solid var(--c-pink); border-left: none; transition: bottom 0.3s;
             }
-            .hero-content { padding: 0 20px; }
-            .hero-title { 
-                font-size: clamp(40px, 12vw, 60px); 
-                text-shadow: 2px 2px 0 var(--eva-green); 
-            }
-            
-            .section-title { 
-                font-size: 32px; 
-                text-shadow: 2px 2px 0 var(--eva-green); 
-            }
-            .section { padding: 30px 20px; } 
-            .grid-2 { grid-template-columns: 1fr; gap: 30px; }
-            
-            /* RESETEO AL FORMATO DE BLOQUE PARA MÓVILES */
-            .video { 
-                display: block; 
-                height: 300px; 
-                position: relative;
-            }
-            
-            .video iframe {
-                position: absolute;
-                top: 0; left: 0;
-                width: 100%; height: 100%;
-                aspect-ratio: auto;
-            }
-            
-            .video.horizontal { aspect-ratio: 16 / 9; width: auto; }
-            .video.vertical { aspect-ratio: 9 / 16; width: auto; }
-            .video.audio { aspect-ratio: 1 / 1; width: auto; }
-
-            /* RESETEO DEL HOVER: Que suba desde abajo como antes */
-            .video-desc {
-                position: absolute;
-                bottom: -100%;
-                left: 0;
-                width: 100%; 
-                height: auto;
-                background: rgba(115, 0, 165, 0.95);
-                border-left: none; /* Quitamos la linea lateral */
-                border-top: 2px solid var(--eva-green);
-                padding: 15px; 
-                opacity: 1; /* Siempre opaco */
-                transition: bottom 0.3s ease-in-out;
-                z-index: 2;
-            }
-
-            .video-desc h4, .video-desc p {
-                min-width: auto; /* Libera el tamaño de texto */
-            }
-
-            .video:hover .video-desc {
-                bottom: 0;
-                width: 100%;
-                padding: 15px;
-                border-left: none;
-            }
+            .video:hover .video-desc, .video:active .video-desc { bottom: 0; width: 100%; padding: 20px; border-left: none; }
         }
     </style>
 </head>
 <body>
-
 <header class="hero">
     <div class="hero-content">
         <h1 class="hero-title">BENYA<br>VÁSQUEZ R.</h1>
         <p class="hero-subtitle">PUBLICISTA /// CONTENT CREATOR /// UGC</p>
     </div>
 </header>
-
 <div class="marquee">
-    <span>
-        ESTRATEGIA DIGITAL <strong>///</strong> BRAND CONTENT <strong>///</strong> CONTENIDO UGC <strong>///</strong> EVENTOS CORPORATIVOS <strong>///</strong> LOCUCIÓN <strong>///</strong> 
-        ESTRATEGIA DIGITAL <strong>///</strong> BRAND CONTENT <strong>///</strong> CONTENIDO UGC <strong>///</strong> EVENTOS CORPORATIVOS <strong>///</strong> LOCUCIÓN <strong>///</strong> 
-    </span>
+    <span>ESTRATEGIA DIGITAL <strong>///</strong> BRAND CONTENT <strong>///</strong> CONTENIDO UGC <strong>///</strong> EVENTOS CORPORATIVOS <strong>///</strong> LOCUCIÓN <strong>///</strong> ESTRATEGIA DIGITAL <strong>///</strong> BRAND CONTENT <strong>///</strong> CONTENIDO UGC <strong>///</strong> EVENTOS CORPORATIVOS <strong>///</strong> LOCUCIÓN <strong>///</strong></span>
 </div>
-
 <section class="section section-about">
     <h2 class="section-title">01. SOBRE MÍ</h2>
-    <p class="about-text">
-        Soy un creativo audiovisual y publicista que busca conectar genuinamente las marcas con las personas. <span class="highlight">Elimino el sesgo de la "marca inalcanzable"</span> para convertirla en el mejor aliado del día a día, construyendo una cohesión real con el público en redes sociales. Me apasiona crear, aprender y, por sobre todo, asegurar que la audiencia nunca quede fuera de la conversación.
-    </p>
+    <p class="about-text">Soy un creativo audiovisual y publicista que busca conectar genuinamente las marcas con las personas. <span class="highlight">Elimino el sesgo de la "marca inalcanzable"</span> para convertirla en el mejor aliado del día a día, construyendo una cohesión real con el público en redes sociales. Me apasiona crear y asegurar que la audiencia nunca quede fuera de la conversación.</p>
 </section>
-
 <section class="section">
     <div class="grid-2">
         <div>
             <h2 class="section-title">02. EXPERIENCIA</h2>
-            <div class="job">
-                <h3>Simple Chile</h3>
-                <p class="date">Julio 2024 - Actualidad | Cliente: Abastible</p>
-                <ul>
-                    <li>Estrategia para lograr que la marca sea la más valorada en su categoría.</li>
-                    <li>Posicionamiento dentro del top 20 de marcas más valoradas en RRSS.</li>
-                </ul>
-            </div>
-            
-            <div class="job">
-                <h3>KlassikCar</h3>
-                <p class="date">Noviembre 2023 - Julio 2024 | Skoda, Volkswagen, Audi</p>
-                <ul>
-                    <li>Acercamiento de una automotora clásica hacia las generaciones más jóvenes.</li>
-                    <li>Mejora significativa en la percepción digital de los clientes.</li>
-                </ul>
-            </div>
-            
-            <div class="job">
-                <h3>Cheil Chile</h3>
-                <p class="date">Cliente: BCI</p>
-                <ul>
-                    <li>Humanización de altos cargos para acercar el banco a las StartUps. Democratización de contenido denso a un lenguaje coloquial.</li>
-                </ul>
-            </div>
-
-            <div class="job">
-                <h3>Raya</h3>
-                <p class="date">Cliente: Mall Arauco</p>
-                <ul>
-                    <li>Adaptación de efemérides en centros comerciales.</li>
-                </ul>
-            </div>
+            <div class="job"><h3>Simple Chile</h3><p class="date">Julio 2024 - Actualidad | Abastible</p><ul><li>Estrategia para lograr que la marca sea la más valorada.</li><li>Top 20 de marcas más valoradas en RRSS.</li></ul></div>
+            <div class="job"><h3>KlassikCar</h3><p class="date">Nov 2023 - Julio 2024 | Skoda, VW, Audi</p><ul><li>Acercamiento de marca automotriz a audiencias jóvenes.</li></ul></div>
+            <div class="job"><h3>Cheil Chile</h3><p class="date">Cliente: BCI</p><ul><li>Humanización de altos cargos y democratización de lenguaje bancario.</li></ul></div>
+            <div class="job"><h3>Raya</h3><p class="date">Cliente: Mall Arauco</p><ul><li>Adaptación de efemérides en centros comerciales.</li></ul></div>
         </div>
-        
         <div>
             <h2 class="section-title">03. STACK & SKILLS</h2>
-            <div class="job">
-                <h3>Software & IA</h3>
-                <p class="date">Edición y Creación</p>
-                <ul>
-                    <li>Adobe Suite: Premiere Pro, Photoshop, Illustrator.</li>
-                    <li>Edición ágil: CapCut.</li>
-                    <li>Inteligencia Artificial: Prompts y flujos con Gemini / ChatGPT.</li>
-                </ul>
-            </div>
-            <div class="job">
-                <h3>Habilidades</h3>
-                <p class="date">Hard & Soft Skills</p>
-                <ul>
-                    <li>Grabación formato RRSS y contenido UGC.</li>
-                    <li>Locuciones, cuñas y producción enfocada en Pymes.</li>
-                </ul>
-            </div>
+            <div class="job"><h3>Software & IA</h3><p class="date">Edición y Creación</p><ul><li>Adobe Suite, CapCut.</li><li>IA: Prompts Gemini / ChatGPT.</li></ul></div>
+            <div class="job"><h3>Habilidades</h3><p class="date">Hard & Soft Skills</p><ul><li>Grabación RRSS y contenido UGC.</li><li>Locuciones y producción para Pymes.</li></ul></div>
         </div>
     </div>
 </section>
-
 <section class="section">
     <h2 class="section-title">04. PORTAFOLIO</h2>
-    
-   <section class="section">
-    <h2 class="section-title">04. PORTAFOLIO</h2>
-    
     <div class="portfolio-category">
         <h3 class="category-title">Brand Content</h3>
-        <div class="grid-scroller">
-            <div class="video-track">
-                
-                <div class="video vertical">
-                    <iframe src="https://www.youtube.com/embed/Ue5JeobiI8M" allowfullscreen></iframe>
-                    <div class="video-desc">
-                        <h4>Haz historia con tu Pyme</h4>
-                        <p>Nos metimos al agua para vivir la experiencia de ChucaoSurf, escuela ganadora del sorteo de Pymes.</p>
-                    </div>
-                </div>
-
-                <div class="video vertical">
-                    <iframe src="https://www.youtube.com/embed/Q_jq4UEDsPs" allowfullscreen></iframe>
-                    <div class="video-desc">
-                        <h4>Ernesto Perfecto</h4>
-                        <p>Viaje al Valle del Huasco para conocer la historia de este tradicional pajarete de la zona.</p>
-                    </div>
-                </div>
-
-                <div class="video vertical">
-                    <iframe src="https://www.youtube.com/embed/bAwvuTqC0c0" allowfullscreen></iframe>
-                    <div class="video-desc">
-                        <h4>Pyme con alma de madre</h4>
-                        <p>Visita a la tradicional cocinería Doña Tina, mostrando el legado y sabor de una familia.</p>
-                    </div>
-                </div>
-
-                <div class="video vertical">
-                    <iframe src="https://www.youtube.com/embed/NzGiC624SJ0" allowfullscreen></iframe>
-                    <div class="video-desc">
-                        <h4>Payantumé</h4>
-                        <p>Descubriendo el legado y la tradición de una Pyme del norte con denominación de origen.</p>
-                    </div>
-                </div>
-
-                <div class="video vertical">
-                    <iframe src="https://www.youtube.com/embed/f1kcKHACDmA" allowfullscreen></iframe>
-                    <div class="video-desc">
-                        <h4>POV Pascua Chocolatosa</h4>
-                        <p>Visita a Pymes chocolateras desde la perspectiva (POV) del mismísimo Conejo de Pascua.</p>
-                    </div>
-                </div>
-
-            </div>
-        </div>
+        <div class="grid-scroller"><div class="video-track">
+            <div class="video vertical"><iframe src="https://www.youtube.com/embed/Ue5JeobiI8M" allowfullscreen></iframe><div class="video-desc"><h4>ChucaoSurf</h4><p>Caso de éxito: video profesional grabado en el agua.</p></div></div>
+            <div class="video vertical"><iframe src="https://www.youtube.com/embed/Q_jq4UEDsPs" allowfullscreen></iframe><div class="video-desc"><h4>Ernesto Perfecto</h4><p>Storytelling sobre el pajarete en el Valle del Huasco.</p></div></div>
+            <div class="video vertical"><iframe src="https://www.youtube.com/embed/bAwvuTqC0c0" allowfullscreen></iframe><div class="video-desc"><h4>Doña Tina</h4><p>Historia de una cocinería tradicional y su legado familiar.</p></div></div>
+            <div class="video vertical"><iframe src="https://www.youtube.com/embed/f1kcKHACDmA" allowfullscreen></iframe><div class="video-desc"><h4>POV Pascua</h4><p>Visita a Pymes desde la perspectiva del Conejo de Pascua.</p></div></div>
+        </div></div>
     </div>
-
     <div class="portfolio-category">
         <h3 class="category-title">Contenido Callejero</h3>
-        <div class="grid-scroller">
-            <div class="video-track">
-                
-                <div class="video vertical">
-                    <iframe src="https://www.youtube.com/embed/uCwv1_7Z9Y8" allowfullscreen></iframe>
-                    <div class="video-desc">
-                        <h4>Vs Veraniego</h4>
-                        <p>Vox populi callejero sobre las preparaciones típicas preferidas por los chilenos en verano.</p>
-                    </div>
-                </div>
-
-                <div class="video vertical">
-                    <iframe src="https://www.youtube.com/embed/LyqBgUpKlMg" allowfullscreen></iframe>
-                    <div class="video-desc">
-                        <h4>Completo Patrimonial</h4>
-                        <p>Recorrido por picadas de completos en Santiago para demostrar que el patrimonio también es gastronómico.</p>
-                    </div>
-                </div>
-
-                <div class="video vertical">
-                    <iframe src="https://www.youtube.com/embed/R5ZZa9CStWc" allowfullscreen></iframe>
-                    <div class="video-desc">
-                        <h4>Bodas Naranjas (14 Feb)</h4>
-                        <p>Modo guerrilla multicámara. Una pareja celebra sus 10 años con el tradicional paseo... pero en un camión Abastible.</p>
-                    </div>
-                </div>
-
-                <div class="video vertical">
-                    <iframe src="https://www.youtube.com/embed/qIbnbYN9Hew" allowfullscreen></iframe>
-                    <div class="video-desc">
-                        <h4>Final del Verano Naranja</h4>
-                        <p>Un rápido recap de las vivencias del verano contado a través de un triste pero agradecido Abastín.</p>
-                    </div>
-                </div>
-
-            </div>
-        </div>
+        <div class="grid-scroller"><div class="video-track">
+            <div class="video vertical"><iframe src="https://www.youtube.com/embed/uCwv1_7Z9Y8" allowfullscreen></iframe><div class="video-desc"><h4>Vs Veraniego</h4><p>Vox populi sobre preparaciones típicas chilenas.</p></div></div>
+            <div class="video vertical"><iframe src="https://www.youtube.com/embed/LyqBgUpKlMg" allowfullscreen></iframe><div class="video-desc"><h4>Completo Patrimonial</h4><p>Patrimonio gastronómico en las picadas de Santiago.</p></div></div>
+            <div class="video vertical"><iframe src="https://www.youtube.com/embed/R5ZZa9CStWc" allowfullscreen></iframe><div class="video-desc"><h4>Bodas Naranjas</h4><p>Modo guerrilla: paseo de novios en camión Abastible.</p></div></div>
+            <div class="video vertical"><iframe src="https://www.youtube.com/embed/qIbnbYN9Hew" allowfullscreen></iframe><div class="video-desc"><h4>Fin de Verano</h4><p>Recap emocional del Verano Naranja de Abastín.</p></div></div>
+        </div></div>
     </div>
-
     <div class="portfolio-category">
         <h3 class="category-title">Eventos Corporativos</h3>
-        <div class="grid-scroller">
-            <div class="video-track">
-                
-                <div class="video vertical">
-                    <iframe src="https://www.youtube.com/embed/rShC_pVroLc" allowfullscreen></iframe>
-                    <div class="video-desc">
-                        <h4>Gira Teletón-Sur</h4>
-                        <p>Cobertura del ambiente y los conciertos desde Santiago hasta Chiloé apoyando a la Teletón.</p>
-                    </div>
-                </div>
-
-                <div class="video vertical">
-                    <iframe src="https://www.youtube.com/embed/19Dtt_CUtJo" allowfullscreen></iframe>
-                    <div class="video-desc">
-                        <h4>Rock En Conce (REC)</h4>
-                        <p>Dos días de energía intensa en el pueblito Pyme de REC2026, entregando experiencias al público.</p>
-                    </div>
-                </div>
-
-                <div class="video vertical">
-                    <iframe src="https://www.youtube.com/embed/72QDmO8qUik" allowfullscreen></iframe>
-                    <div class="video-desc">
-                        <h4>Fiesta de la Sopa</h4>
-                        <p>Cobertura en Valdivia acompañando a las Pymes regionales en su competencia de invierno.</p>
-                    </div>
-                </div>
-
-                <div class="video vertical">
-                    <iframe src="https://www.youtube.com/embed/XfmIUBrsZn4" allowfullscreen></iframe>
-                    <div class="video-desc">
-                        <h4>Corpogala 2025</h4>
-                        <p>Abastín bailando country en la corpogala, aprovechando la instancia para darle pantalla a las Pymes.</p>
-                    </div>
-                </div>
-
-            </div>
-        </div>
+        <div class="grid-scroller"><div class="video-track">
+            <div class="video vertical"><iframe src="https://www.youtube.com/embed/rShC_pVroLc" allowfullscreen></iframe><div class="video-desc"><h4>Gira Teletón</h4><p>Cobertura desde Santiago hasta Castro, Chiloé.</p></div></div>
+            <div class="video vertical"><iframe src="https://www.youtube.com/embed/19Dtt_CUtJo" allowfullscreen></iframe><div class="video-desc"><h4>Rock En Conce</h4><p>Experiencia completa en el pueblito Pyme de REC.</p></div></div>
+            <div class="video vertical"><iframe src="https://www.youtube.com/embed/72QDmO8qUik" allowfullscreen></iframe><div class="video-desc"><h4>Fiesta de la Sopa</h4><p>Acompañando a Pymes en Valdivia durante el invierno.</p></div></div>
+            <div class="video vertical"><iframe src="https://www.youtube.com/embed/XfmIUBrsZn4" allowfullscreen></iframe><div class="video-desc"><h4>Corpogala 2025</h4><p>Abastín dando pantalla a las Pymes en la gala.</p></div></div>
+        </div></div>
     </div>
-
 </section>
-
 <footer class="footer">
     <h2 class="footer-title">HAGAMOS ALGO GRANDE</h2>
     <div>
@@ -645,6 +196,5 @@
         <a href="https://www.linkedin.com/in/benya-vásquez-rodríguez-1a9bba100" target="_blank" class="footer-link">LinkedIn</a>
     </div>
 </footer>
-
 </body>
 </html>
